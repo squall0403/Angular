@@ -1,0 +1,84 @@
+<section>
+<div class="container-fluid">
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-2">An Angular product</h1>
+          <p class="lead">powered by Google</p>
+          <a href="https://docs.angularjs.org/api" target="blank">Get help</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <h1>Top recommended courses</h1>
+      </div>
+	  <!-- Start course list -->
+      <div class="" >
+        <div class="row">
+          <form class="form-inline">
+            <label for="filterBy" class="">Sort by: &nbsp;</label>
+            <select class="form-control" id="filterBy" ng-model="filterValue">
+              <option value="coursename">Course name</option>
+              <option value="category">Category</option>
+            </select>
+
+            <label for="filterBy" class="">&nbsp; Display: &nbsp;</label>
+            <select class="form-control" id="filterBy" ng-model="displayValue">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="">All</option>
+            </select>
+          </form>
+        </div>
+        <br>
+
+        <div class="row">
+          <div class="col-md-4" ng-repeat="course in courses | filter:true | limitTo:displayValue | orderBy:filterValue">
+            <div class="card" style="margin-bottom:10px">
+              <img class="card-img-top" ng-src="{{course.courseimage}}" alt="Image for couse {{course.coursename}}">
+              <div class="card-body">
+                <h4 class="card-title">{{course.coursename}}</h4>
+                <p class="card-text">{{course.category}}.</p>
+                <a href="#/course/{{courses.indexOf(course)}}" class="btn btn-info">Access course</a>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Author: Duy Nguyen</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+	  <!-- End o course list -->
+	  
+	  <!-- Start list -->
+	  <hr>
+	<div class="row">
+		<h1 class="col-md-12">Most active users</h1>
+		<br>
+	</div>
+	
+	<div>
+		<div class="row">
+			<div class="col-md-4" style="margin-bottom:10px" ng-repeat="user in users | limitTo:6">
+				<div class="card text-white bg-dark mb-3 text-center">
+				  <div class="card-body">
+					<a href="#/user/{{users.indexOf(user)}}"><img ng-src="{{user.avatar}}" ></a>
+					<h4 class="media-heading">{{user.first_name}} {{user.last_name}}</h4>
+					<p>{{user.job_title}}</p>
+					<a href="mailto:{{user.email}}">{{user.email}}</a>
+				  </div>
+				  <div class="card-footer">
+				  <small class="text-muted">{{user.university}}</small>
+				</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+		
+	  
+	  <!-- End of user list -->
+    </div>
+
+</section>
