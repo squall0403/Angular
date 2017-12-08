@@ -1,5 +1,24 @@
+<style media="screen">
+	html {
+		background: #343a40;
+	}
+</style>
 <section>
-	<div ng-model="users">
-		{{users[whichItem]}}
+	<div ng-model="users" class="bg-dark">
+		<div class="container">
+			<div class="row pt-5">
+				<div class="col-md-3 col-sm-12">
+					<img src="{{users[whichItem].avatar}}" alt="..." class="rounded-circle border border-secondary bg-warning" style="margin-top:20px;border-width:5px !important">
+				</div>
+				<div class="col-md-9 col-sm-12" style="color:white">
+					<h1 class="text-primary">{{users[whichItem].first_name}} {{users[whichItem].last_name}}</h1>
+					<h5>{{users[whichItem].job_title}}</h5>
+					<h6>{{users[whichItem].university}}</h6>
+					<p class="lead pt-3">{{users[whichItem].bio}}</p>
+					<p><a class="text-info" href="mailto:{{users[whichItem].email}}">{{users[whichItem].email}}</a></p>
+					<a href="#/" class="btn btn-light btn-sm mt-3" role="button" aria-disabled="true">Back to list</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
