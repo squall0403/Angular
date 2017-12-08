@@ -25,8 +25,9 @@
     </div>
     <div class="container">
       <div class="row">
-        <h1>Top 4 recommended courses</h1>
+        <h1>Top recommended courses</h1>
       </div>
+	  <!-- Start course list -->
       <div class=""  ng-controller="CourseList">
         <div class="row">
           <form class="form-inline">
@@ -36,7 +37,7 @@
               <option value="category">Category</option>
             </select>
 
-            <label for="filterBy" class="">Display: &nbsp;</label>
+            <label for="filterBy" class="">&nbsp; Display: &nbsp;</label>
             <select class="form-control" id="filterBy" ng-model="displayValue">
               <option value="5">5</option>
               <option value="10">10</option>
@@ -48,9 +49,9 @@
         <br>
 
         <div class="row">
-          <div class="col-md-3" ng-repeat="course in courses | limitTo : displayValue | filter:true | orderBy:filterValue">
-            <div class="card" style="margin-bottom:10px;height:435px">
-              <img class="card-img-top" src="images/courseimage.jpg" alt="Card image cap">
+          <div class="col-md-4" ng-repeat="course in courses | filter:true | limitTo : displayValue | orderBy:filterValue">
+            <div class="card" style="margin-bottom:10px">
+              <img class="card-img-top" src="{{course.courseimage}}" alt="Image for couse {{course.coursename}}">
               <div class="card-body">
                 <h4 class="card-title">{{course.coursename}}</h4>
                 <p class="card-text">{{course.category}}.</p>
@@ -64,7 +65,35 @@
         </div>
 
       </div>
-
+	  <!-- End o course list -->
+	  
+	  <!-- Start list -->
+	  <hr>
+	<div class="row">
+		<h1 class="col-md-12">Most active users</h1>
+		<br>
+	</div>
+	
+	<div ng-controller="UserList">
+		<div class="row">
+			<div class="col-md-4" style="margin-bottom:10px" ng-repeat="user in users | limitTo:6">
+				<div class="card text-white bg-dark mb-3 text-center">
+					  <div class="card-body">
+						<img src="{{user.avatar}}" >
+						<h4 class="media-heading">{{user.first_name}} {{user.last_name}}</h4>
+						<p>{{user.job_title}}</p>
+						<a href="mailto:{{user.email}}">{{user.email}}</a>
+					  </div>
+				  <div class="card-footer">
+				  <small class="text-muted">{{user.university}}</small>
+				</div>
+				</div>
+			</div>		
+		</div>
+	</div>
+		
+	  
+	  <!-- End of user list -->
     </div>
 
 

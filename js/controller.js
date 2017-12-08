@@ -8,3 +8,10 @@ myApp.controller("CourseList", ["$scope", "$http", function($scope, $http){
   })
 
 }]);
+
+myApp.controller("UserList", ["$scope", "$http", function($scope, $http){
+  $http.get('js/userdata.json').then(function(data){
+    $scope.users = data.data;
+  })
+
+}]);
