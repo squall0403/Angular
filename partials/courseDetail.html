@@ -1,13 +1,23 @@
-<section>
-	<div ng-model="courses">
-		Course id: {{courses[whichItem].courseid}}
-		Course name: {{courses[whichItem].coursename}}
-		Category: {{courses[whichItem].category}}
-		Start date: {{courses[whichItem].startdate}}	
-		Status: {{courses[whichItem].active}}
-		Course Image: {{courses[whichItem].courseimage}}	
-		
-		<br>
-		{{courses[whichItem]}}
+<style>
+	html {
+		background: #343a40;
+	}
+</style>
+<section style="background: #343a40;color:white">
+	<div class="container" ng-model="courses">
+		<div class="row mt-5">
+			<div class="col-sm-4 d-flex align-items-center">
+				<img src="{{courses[whichItem].courseimage}}" alt="course image of course {{courses[whichItem].coursename}}">
+			</div>
+			<div class="col-sm-5">
+				<h1 class="text-primary">{{courses[whichItem].coursename}}</h1>
+				<p>{{courses[whichItem].description}}</p>
+				<p>Start on: {{courses[whichItem].startdate}}</p>
+				<a href="#/">&laquo; Back to list</a>
+			</div>
+			<div class="offset-sm-1 col-sm-2 d-flex align-items-center">
+				<a style="width: -webkit-fill-available;" href="#" class="btn btn-info">Enroll now</a>
+			</div>
+		</div>
 	</div>
 </section>
