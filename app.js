@@ -5,6 +5,10 @@
     'ionic'
   ]);
 
+  // Tabs controller
+  app.controller('TabsController', function(){
+
+  });
   // controller to get profile data
   app.controller('MainPage', function($scope, $http){
     var settings = {
