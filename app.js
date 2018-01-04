@@ -1,39 +1,30 @@
 (function(){
-  // Get data from server
-  var result;
-  function getData(){
-    $.ajax({
-      url: 'http://test.fastget.net/api/profiles/5',
-      callbackParameter: 'callback',
-      async: true,
-      crossDomain: true,
-      headers:{"authorization": "Basic ZGRnZ2VlOkZnMTAwITIzNA=="},
-      success: function(data) {
-          //it works, do something with the data
-      },
-      error: function() {
-          //something went wrong, handle the error and display a message
-          console.log('failed');
-      },
-      complete: function(data){
-        result = data.responseText;
-        return data.responseText;
-      }
-    });
-  }
-  // -----
-
 
   // Define module
-  var app = angular.module('app', []);
+  var app = angular.module('app', [
+    'ionic'
+  ]);
 
-  app.controller('MainPage', function($scope, $timeout){
-    result = getData();
-    console.log(result);
-    $timeout(function(){
-      $scope.myData = JSON.parse(result);
-    }, 1500)
+  // controller to get profile data
+  app.controller('MainPage', function($scope, $http){
+    var settings = {
+      method: 'GET',
+      url: 'http://test.fastget.net/api/profiles/4',
+      headers:{"authorization": "Basic ZGRnZ2VlOkZnMTAwITIzNA=="},
+      async: true,
+      crossDomain: true
+    }
+      $http(settings).then(function(data){
+          $scope.myData = data.data;
+      })
+  });
 
+  // define directive for Register
+  app.directive('appRegister', function(){
+    return {
+      restrict: 'E',
+      templateUrl: 'partials/register.html'
+    };
   });
 
 })();
