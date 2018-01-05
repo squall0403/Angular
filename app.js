@@ -53,6 +53,7 @@
           clearFrom();
           alert('Accout created, Logging in')
       }, function(response){
+          alert(response.message)
           alert('Can not create account');
       });
       function clearFrom(){
