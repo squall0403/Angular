@@ -2,30 +2,28 @@
 
   // Define module
   var app = angular.module('app', [
+
     'ionic'
   ]);
 
-  // Tabs controller
-  app.controller('TabsController', function(){
-
-  });
   // controller to get profile data
   app.controller('ProfileController', function($scope, $http){
     var settings = {
       method: 'GET',
-      url: 'http://test.fastget.net/api/profiles/4',
+      url: 'http://test.fastget.net/api/profiles/',
       headers:{"authorization": "Basic ZHV5bnhhOkZnMTAwITIzNDU="},
       async: true,
       crossDomain: true
     }
       $http(settings).then(function(data){
-          $scope.myData = data.data;
+          $scope.myProfile = data.data;
       })
   });
 
   // controller for profile Register
   app.controller('ProfileCreation', function ($scope, $http) {
     $scope.language = "en"
+    var profileObject={}
     var settings = {
       method: 'POST',
       url: 'http://test.fastget.net/api/profiles/',
@@ -40,7 +38,7 @@
     }
 
     $scope.createProfile = function (){
-      var profileObject = {
+      profileObject = {
         "username":$scope.phone,
         "first_name":$scope.first_name,
       	"last_name":$scope.last_name,
@@ -53,8 +51,22 @@
       settings.data = Object.assign(settings.data,profileObject);
       $http(settings).then(function(data){
           $scope.returnData = data.data;
+          clearFrom();
+          alert('Accout created, Logging in')
+      }, function(response){
+          alert('Can not create account');
       });
+      function clearFrom(){
+        $scope.phone='';
+        $scope.first_name='';
+      	$scope.last_name='';
+        $scope.phone='';
+      	$scope.password='';
+      	$scope.address='';
+      	$scope.email='';
+      }
     }
+
   });
 
   // define directive for Register
