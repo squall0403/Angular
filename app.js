@@ -1,5 +1,16 @@
 (function(){
+// Working with local storage
 
+  document.addEventListener("DOMContentLoaded", function(){
+
+    var someSetting = localStorage.getItem('someSetting');
+    console.log(someSetting);
+
+
+    main();
+  },false);
+
+function main(){
   // Define module
   var app = angular.module('app', [
     'ionic'
@@ -70,5 +81,9 @@
   });
 
   // define directive for Register
+}
+
+
+
 
 })();
